@@ -3,70 +3,156 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A short, opinionated list of six cafés worth a detour in Helsinki.">
 <title>6 Cafés in Helsinki</title>
 <style>
-  :root { color-scheme: dark; }
+  :root {
+    color-scheme: dark light;
+    --bg: #13291f;
+    --bg-card: #1c3a2c;
+    --bg-card-hover: #224634;
+    --border: #2c5540;
+    --text: #eae4d9;
+    --text-muted: #9db5a5;
+    --text-note: #d3dcd3;
+    --accent: #e8b04b;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f2e8;
+      --bg-card: #fffdf8;
+      --bg-card-hover: #fff9ec;
+      --border: #ddd3bd;
+      --text: #22301f;
+      --text-muted: #5d7364;
+      --text-note: #3c4b3e;
+      --accent: #9a6b14;
+    }
+  }
+  * { box-sizing: border-box; }
   body {
     margin: 0;
-    padding: 3rem 1.25rem;
+    padding: clamp(2rem, 6vw, 4rem) 1.25rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    background: #13291f;
-    color: #eae4d9;
-    line-height: 1.5;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 640px; margin: 0 auto; }
-  h1 { font-size: 1.9rem; margin: 0 0 .25rem; }
-  p.sub { margin: 0 0 2rem; color: #9db5a5; }
-  ul { list-style: none; margin: 0; padding: 0; }
+  main { max-width: 68ch; margin: 0 auto; }
+  header { margin-bottom: 2.25rem; }
+  h1 {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 .4rem;
+  }
+  h2 { font-size: 1.1rem; margin: 0; }
+  p.sub { margin: 0; color: var(--text-muted); font-size: 1.05rem; }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: .85rem;
+  }
+  @media (min-width: 46rem) {
+    ul { grid-template-columns: 1fr 1fr; }
+  }
   li {
-    background: #1c3a2c;
-    border: 1px solid #2c5540;
-    border-radius: 10px;
-    padding: 1rem 1.15rem;
-    margin-bottom: .85rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.15rem 1.25rem;
+    transition: background-color .15s ease, transform .15s ease, border-color .15s ease;
   }
-  .name { font-weight: 600; font-size: 1.1rem; }
+  li:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  li:focus-within {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .25rem .6rem;
+  }
   .area {
-    font-size: .8rem;
+    font-size: .72rem;
     text-transform: uppercase;
-    letter-spacing: .05em;
-    color: #8fb79c;
-    margin-left: .5rem;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .1rem .55rem;
+    white-space: nowrap;
   }
-  .note { margin: .35rem 0 0; color: #d3dcd3; }
-  footer { margin-top: 2rem; font-size: .85rem; color: #8fb79c; }
+  .note { margin: .45rem 0 .7rem; color: var(--text-note); }
+  .map {
+    font-size: .85rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .map:hover, .map:focus-visible { border-bottom-color: currentColor; }
+  .map:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  footer {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: .85rem;
+    color: var(--text-muted);
+  }
   footer p { margin: 0 0 .25rem; }
   footer p:last-child { margin-bottom: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    li { transition: none; }
+    li:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <h1>6 Cafés in Helsinki</h1>
-  <p class="sub">A short, opinionated list.</p>
+  <header>
+    <h1>6 Cafés in Helsinki</h1>
+    <p class="sub">A short, opinionated list — worth the detour.</p>
+  </header>
   <ul>
     <li>
-      <span class="name">Kaffa Roastery</span><span class="area">Punavuori</span>
+      <div class="head"><h2>Kaffa Roastery</h2><span class="area">Punavuori</span></div>
       <p class="note">Working roastery with a counter out front — the place to taste single origins.</p>
+      <a class="map" aria-label="Kaffa Roastery on Google Maps" href="https://www.google.com/maps/search/?api=1&amp;query=Kaffa+Roastery+Helsinki" target="_blank" rel="noopener">Map ↗</a>
     </li>
     <li>
-      <span class="name">Johan &amp; Nyström</span><span class="area">Katajanokka</span>
+      <div class="head"><h2>Johan &amp; Nyström</h2><span class="area">Katajanokka</span></div>
       <p class="note">Canal-side brick vaults, big windows, and slow brews by the water.</p>
+      <a class="map" aria-label="Johan &amp; Nyström on Google Maps" href="https://www.google.com/maps/search/?api=1&amp;query=Johan+och+Nystrom+Helsinki" target="_blank" rel="noopener">Map ↗</a>
     </li>
     <li>
-      <span class="name">Café Regatta</span><span class="area">Töölö</span>
+      <div class="head"><h2>Café Regatta</h2><span class="area">Töölö</span></div>
       <p class="note">Tiny red seaside cottage known for cinnamon buns and an outdoor campfire.</p>
+      <a class="map" aria-label="Café Regatta on Google Maps" href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+Regatta+Helsinki" target="_blank" rel="noopener">Map ↗</a>
     </li>
     <li>
-      <span class="name">Ipi Kulmakuppila</span><span class="area">Kallio</span>
+      <div class="head"><h2>Ipi Kulmakuppila</h2><span class="area">Kallio</span></div>
       <p class="note">Relaxed corner café and lunch spot with a community feel.</p>
+      <a class="map" aria-label="Ipi Kulmakuppila on Google Maps" href="https://www.google.com/maps/search/?api=1&amp;query=Ipi+Kulmakuppila+Helsinki" target="_blank" rel="noopener">Map ↗</a>
     </li>
     <li>
-      <span class="name">Sävy</span><span class="area">Kallio</span>
+      <div class="head"><h2>Sävy</h2><span class="area">Kallio</span></div>
       <p class="note">Small specialty bar where the baristas take the filter coffee seriously.</p>
+      <a class="map" aria-label="Sävy on Google Maps" href="https://www.google.com/maps/search/?api=1&amp;query=Savy+Cafe+Helsinki" target="_blank" rel="noopener">Map ↗</a>
     </li>
     <li>
-      <span class="name">Good Life Coffee</span><span class="area">Kallio</span>
+      <div class="head"><h2>Good Life Coffee</h2><span class="area">Kallio</span></div>
       <p class="note">Neighbourhood specialty spot and roaster with a steady local crowd.</p>
+      <a class="map" aria-label="Good Life Coffee on Google Maps" href="https://www.google.com/maps/search/?api=1&amp;query=Good+Life+Coffee+Helsinki" target="_blank" rel="noopener">Map ↗</a>
     </li>
   </ul>
   <footer>
